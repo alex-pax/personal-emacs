@@ -1,3 +1,12 @@
+;; package settings
+
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+
+
 ;; customizing emacs backup file behavior
 ;;
 ;; store backup files in a subdirectory of the file's main directory
@@ -28,12 +37,12 @@
 (define-key global-map "\C-cc" 'org-capture)
 
 (setq org-log-done t)
-(setq org-agenda-files '("c:/Users/apax/org"))
+(setq org-agenda-files '("~/org"))
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/org/todo.org" "Tasks")
 	 "* TODO %?\n %i\n %a")
 	("d" "Deadline" entry (file+olp+datetree "~/org/deadlines.org")
-	 "* DEADLINE PENDING %?\nDue by: %^{deadline}t\n%^{Assignee:|self|wmann|ngufarov}p\n Created: %U\n %i\n %a")))
+	 "* DEADLINE PENDING %?\nDue by: %^{deadline}t\n%^{Assignee:|self}p\n Created: %U\n %i\n %a")))
 
 ;; Local:
 ;; Creates "Simple agenda view" to show all TODO items across org files
@@ -76,7 +85,7 @@
 ;; Add to list of prefixes recognized by ESS. 
 ;; Matching versions will appear after doing M-x R <TAB> <TAB> 
 (setq ess-r-versions '("R-1" "R-2" "R-3" "R-4" "R-current" "R-devel" "R-patched"))
-(load "C:/Users/apax/.emacs.d/elpa/ess-20230419.1527/ess-site.el")
+(load "~/.emacs.d/elpa/ess-20230419.1527/ess-site.el")
 
 ;; Set default R version, (i.e. the one launched by typing M-x R <RET>)
 (setq inferior-R-program-name "C:/Program Files/R/R-4.3.0/bin/x64/Rterm.exe")
@@ -180,9 +189,3 @@
     (setq initial-frame-alist '( (tool-bar-lines . 0)))
     (setq default-frame-alist '( (tool-bar-lines . 0)))))
 
-;; package settings
-
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
